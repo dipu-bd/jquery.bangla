@@ -2,19 +2,25 @@
 <html>
 <head>
   <title>Bangla Input Test</title>
+  <!-- include libraries(jQuery, bootstrap) -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+  <!-- include summernote css/js -->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
   <link rel="stylesheet" href="../src/css/index.css">
 
   <style>
-    html, body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
     body {
       padding: 10px;
       display: flex;
       justify-content: center;
     }
     section {
-      max-width: 1000px;
+      max-width: 1200px;
     }
     h1 {
       color: teal;
@@ -35,7 +41,7 @@
       outline: none;
       border-radius: 3px;
       border: 1px solid #ccc;
-      width: 600px;
+      width: 690px;
       font-size: 1.3rem;
     }
     textarea#text-area {
@@ -43,17 +49,20 @@
       outline: none;
       border-radius: 3px;
       border: 1px solid #ccc;
-      width: 600px;
-      height: 300px;
+      width: 690px;
+      height: 100px;
       font-size: 1.4rem;
     }
     div#content-area {
       border-radius: 3px;
       border: 1px solid #ccc;
       padding: 10px;
-      width: 600px;
-      height: 300px;
+      width: 690px;
+      height: 150px;
       font-size: 1.3rem;
+    }
+    div#summer-note {
+      width: 690px;
     }
   </style>
 </head>
@@ -73,11 +82,21 @@
 
     <h3>Content Editable</h3>
     <div id="content-area" contenteditable="true">
-      <span>Start editing here</span>
+      <span>Start typing here</span>
     </div>
+
+    <h3>Summernote</h3>
+    <div id="summer-note"></div>
   </section>
 
   <script src="../src/lib/avro.min.js"></script>
   <script src="../src/index.js"></script>
+
+  <script>
+    $('#summer-note').summernote({
+      placeholder: 'Start editing here',
+      height: 200
+    })
+  </script>
 </body>
 </html>
