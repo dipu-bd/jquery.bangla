@@ -1,0 +1,29 @@
+{
+  "name": "bangla-input",
+  "version": "1.0.0",
+  "description": "A versatile bangla input tools for the web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dipu-bd/bangla-input.git"
+  },
+  "keywords": [
+    "bangla",
+    "avro",
+    "jsavro",
+    "phonetic",
+    "typing",
+    "input",
+    "tool",
+    "ime"
+  ],
+  "author": "Sudipto Chandra <dipu.sudipta@gmail.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/dipu-bd/bangla-input/issues"
+  },
+  "homepage": "https://github.com/dipu-bd/bangla-input#readme"
+}
