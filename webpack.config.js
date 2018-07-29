@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   entry: {
@@ -6,6 +6,6 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].min.js'
+    filename: 'jquery.bninput.js'
   }
-};
+}
