@@ -1,5 +1,5 @@
 {
-  "name": "jquery.bninput",
+  "name": "jquery.bangla",
   "version": "1.1.1",
   "description": "A versatile bangla input tool for the web",
   "main": "src/index.js",
@@ -24,6 +24,8 @@
     "tool",
     "ime",
     "jquery",
+    "jquery.bangla",
+    "jquery.bninput",
     "input tools",
     "bangla input"
   ],
