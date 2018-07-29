@@ -1,7 +1,7 @@
 {
   "name": "jquery.bninput",
   "version": "1.0.0",
-  "description": "A versatile bangla input tools for the web",
+  "description": "A versatile bangla input tool for the web",
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint ./src/index.js",
