@@ -8,7 +8,8 @@
     "build": "webpack --progress --mode production",
     "dev": "webpack --watch --progress --hide-modules --watch-poll --mode development",
     "prepublish": "npm run lint && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gh-pages": "npm run build && cd example && git stash && cp -r ../dist . git add --all && git commit -m Update && git push"
   },
   "repository": {
     "type": "git",
