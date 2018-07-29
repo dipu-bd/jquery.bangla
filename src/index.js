@@ -27,34 +27,10 @@ const KEY_CODE = {
   DOT: 190
 }
 
-function insertAtCursor ($elem, text) {
-  let pos = $elem.caret('pos')
-  if ($elem.attr('contenteditable') !== 'true') {
-    // not content-editable
-    let val = $elem.val()
-    val = val.substr(0, pos) + text + val.substr(pos)
-    $elem.val(val)
-  } else {
-    // when content-ediable
-    if (window.getSelection) {
-      const sel = window.getSelection()
-      if (sel.getRangeAt && sel.rangeCount) {
-        const range = sel.getRangeAt(0)
-        const selectedText = range.extractContents().textContent
-        if (selectedText) {
-          $elem.trigger({ type: 'keypress', which: KEY_CODE.BACKSPACE })
-          pos -= selectedText.length
-        }
-        // range.deleteContents()
-        range.insertNode(document.createTextNode(text))
-      }
-    } else if (document.selection && document.selection.createRange) {
-      document.selection.createRange().text = text
-      console.log(document.selection.createRange())
-    }
-  }
-  $elem.caret('pos', pos + text.length)
-}
+// to make the caret blinking
+window._caretBlinker = window._caretBlinker || (
+  setInterval(() => $('.caret-blink').fadeIn(300).fadeOut(500), 1000)
+)
 
 function registerInputTool ($elem, v) {
   // modify configs
@@ -65,6 +41,7 @@ function registerInputTool ($elem, v) {
   let word = ''
   let suggestions = []
   let selectedIndex = -1
+  let caretPosBeforeBlur = 0
 
   // Initialize avro
   const avro = AvroPhonetic(
@@ -108,20 +85,20 @@ function registerInputTool ($elem, v) {
       'font-weight': '1.15em',
       'margin': '3px',
       'margin-bottom': 0,
-      'padding': '5px 12px',
       'background': '#fafafc',
       'overflow': 'visible',
+      'padding': '5px 12px',
       'border-bottom': '1px solid #dedfe5',
       'transform': 'translateZ(0)',
       '-moz-transform': 'translateZ(0)',
       '-webkit-transform': 'translateZ(0)'
     })
-    const caret = $('<span>&nbsp</span>')
+    const caret = $('<span class="caret-blink">&nbsp</span>')
     caret.css({
       'display': 'inline-block',
       'width': '2px',
       'background-color': '#444',
-      'margin-left': '3px'
+      'margin-left': '1px'
     })
     running.append(caret)
     view.append(running)
@@ -221,11 +198,52 @@ function registerInputTool ($elem, v) {
     if (selectedIndex >= 0 || selectedIndex < suggestions.length) {
       selected = suggestions[selectedIndex]
     }
-    $elem.focus()
-    insertAtCursor($elem, selected)
+    insertAtCursor(selected)
     avro.commit(word, selected)
     setWord('')
   }
+
+  const insertAtCursor = (text) => {
+    if (!$elem.is(':focus')) {
+      $elem.focus()
+    }
+    let pos = $elem.caret('pos')
+    if ($elem.attr('contenteditable') !== 'true') {
+      // not content-editable
+      let val = $elem.val()
+      val = val.substr(0, pos) + text + val.substr(pos)
+      $elem.val(val)
+    } else {
+      // when content-ediable
+      if (window.getSelection) {
+        const sel = window.getSelection()
+        if (sel.getRangeAt && sel.rangeCount) {
+          const range = sel.getRangeAt(0)
+          const selectedText = range.extractContents().textContent
+          if (selectedText) {
+            $elem.trigger({ type: 'keypress', which: KEY_CODE.BACKSPACE })
+            pos -= selectedText.length
+          }
+          // range.deleteContents()
+          range.insertNode(document.createTextNode(text))
+        }
+      } else if (document.selection && document.selection.createRange) {
+        document.selection.createRange().text = text
+        console.log(document.selection.createRange())
+      }
+    }
+    $elem.caret('pos', pos + text.length)
+  }
+
+  //
+  // Watch on element blur event
+  //
+  $elem.blur(() => {
+    caretPosBeforeBlur = $elem.caret('pos')
+  })
+  $elem.focus(() => {
+    $elem.caret('pos', caretPosBeforeBlur || 0)
+  })
 
   //
   // Watch on window Resize
@@ -269,6 +287,10 @@ function registerInputTool ($elem, v) {
         setSelectedIndex(selectedIndex + 1)
         if (selectedIndex >= 0) return false
         break
+      case KEY_CODE.A:
+        if (!e.ctrlKey || !word) break
+        setWord('')
+        return true
       case KEY_CODE.ESC:
         if (!word) return true
         setWord('')
