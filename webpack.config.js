@@ -1,9 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'bangla-input': './src/index.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bangla-input.min.js'
+    filename: '[name].min.js'
   }
 };
