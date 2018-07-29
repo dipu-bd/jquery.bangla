@@ -4,7 +4,7 @@
   "description": "A versatile bangla input tools for the web",
   "main": "src/index.js",
   "scripts": {
-    "build": "babel src/index.js --out-dir dist",
+    "build": "babel ./src/index.js -f bangla-input.js --out-dir dist/ -s --presets env --minified --no-comments --compact",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
