@@ -8,6 +8,7 @@ echo '======= pull latest ========'
 git stash
 git pull origin gh-pages
 echo '======= publish changes ========'
+rm -rf dist
 cp -r ../dist .
 git add dist/**
 git commit -m "Update dist"
