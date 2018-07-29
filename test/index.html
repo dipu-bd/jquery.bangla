@@ -14,9 +14,7 @@
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 
   <!-- custom scripts -->
-  <link rel="stylesheet" href="../src/css/index.css">
-  <script src="../src/lib/avro.min.js"></script>
-  <script src="../src/index.js"></script>
+  <script src="../dist/bangla-input.min.js"></script>
 
   <style>
     body {
@@ -98,7 +96,8 @@
     $('#summer-note').summernote({
       placeholder: 'Start editing here',
       height: 200
-    })
+    });
+    $('#input-area').initBangla();
   </script>
 </body>
 </html>
