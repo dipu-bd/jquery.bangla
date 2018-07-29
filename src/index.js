@@ -1,23 +1,18 @@
 import AvroPhonetic from './lib/avro.min.js'
 
-function insertAtCursor (myField, myValue) {
-  // IE support
-  if (document.selection) {
-    myField.focus()
-    const sel = document.selection.createRange()
-    sel.text = myValue
-    return
-  }
-  // MOZILLA and others
-  if (myField.selectionStart || Number(myField.selectionStart) === 0) {
-    var startPos = myField.selectionStart
-    var endPos = myField.selectionEnd
-    myField.value = myField.value.substring(0, startPos) +
-      myValue +
-      myField.value.substring(endPos, myField.value.length)
+const $ = window.$ || window.jQuery || console.error('Error: jQuery does not exists!')
+
+function insertAtCursor ($elem, text) {
+  const pos = $elem.caret('pos')
+  if ($elem.attr('contenteditable') === 'true') {
+    const node = document.createTextNode(text)
+    console.log(node)
   } else {
-    myField.value += myValue
+    let val = $elem.val()
+    val = val.substr(0, pos) + text + val.substr(pos)
+    $elem.val(val)
   }
+  $elem.caret('pos', pos + text.length)
 }
 
 function registerInputTool ($elem) {
@@ -39,20 +34,18 @@ function registerInputTool ($elem) {
       console.log('--------------------------------')
       words.forEach(v => console.log(v))
       console.log('--------------------------------')
-      insertAtCursor(e.target, words[0] + ch)
+      insertAtCursor($elem, words[0])
       word = ''
     } else {
       word += ch
+      return false
     }
-    return false
   })
 }
 
-const jquery = window.$ || window.jQuery
-if (jquery) {
-  jquery.fn.initBangla = function () {
-    return this.each(() => registerInputTool(jquery(this)))
-  }
+require('./lib/jquery.caret')
+$.fn.initBangla = function () {
+  return this.each(() => registerInputTool($(this)))
 }
 
 export default registerInputTool
