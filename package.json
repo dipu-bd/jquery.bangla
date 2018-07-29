@@ -22,7 +22,10 @@
     "typing",
     "input",
     "tool",
-    "ime"
+    "ime",
+    "jquery",
+    "input tools",
+    "bangla input"
   ],
   "author": "Sudipto Chandra <dipu.sudipta@gmail.com>",
   "license": "MPL-2.0",
