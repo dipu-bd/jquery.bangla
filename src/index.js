@@ -28,15 +28,30 @@ const KEY_CODE = {
 }
 
 function insertAtCursor ($elem, text) {
-  const pos = $elem.caret('pos')
-  if ($elem.attr('contenteditable') === 'true') {
-    const node = document.createTextNode(text)
-    console.log(node)
-    $elem.append()
-  } else {
+  let pos = $elem.caret('pos')
+  if ($elem.attr('contenteditable') !== 'true') {
+    // not content-editable
     let val = $elem.val()
     val = val.substr(0, pos) + text + val.substr(pos)
     $elem.val(val)
+  } else {
+    // when content-ediable
+    if (window.getSelection) {
+      const sel = window.getSelection()
+      if (sel.getRangeAt && sel.rangeCount) {
+        const range = sel.getRangeAt(0)
+        const selectedText = range.extractContents().textContent
+        if (selectedText) {
+          $elem.trigger({ type: 'keypress', which: KEY_CODE.BACKSPACE })
+          pos -= selectedText.length
+        }
+        // range.deleteContents()
+        range.insertNode(document.createTextNode(text))
+      }
+    } else if (document.selection && document.selection.createRange) {
+      document.selection.createRange().text = text
+      console.log(document.selection.createRange())
+    }
   }
   $elem.caret('pos', pos + text.length)
 }
