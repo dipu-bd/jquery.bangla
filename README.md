@@ -26,7 +26,7 @@ $('textarea').bninput(); // text area
 
 $('div[contenteditable="true"]').bninput(); // content editable div
 
-$('.note-editable').bninput(contentEditable: true) // summer-note (a free WYSWYG editor)
+$('.note-editable').bninput() // summer-note (a free WYSWYG editor)
 ```
 
 ## License
