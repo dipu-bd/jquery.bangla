@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Bangla Input Test</title>
@@ -14,42 +15,33 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 
   <!-- custom scripts -->
+  <link rel="stylesheet" type="text/css" href="index.css">
   <script src="dist/jquery.bninput.js"></script>
 
   <style>
-    body {
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-    }
-    section {
-      max-width: 1200px;
-    }
-    h1 {
-      color: teal;
-      text-align: center;
-      padding: 5px;
-      margin: 5px 25px;
-      border-bottom: 1px solid #ccc;
-    }
     h3 {
       color: #444;
       margin-bottom: 3px;
     }
+
     hr {
       margin-top: 15px;
     }
+
     input#input-area {
+      color: black;
+      background-color: white;
       padding: 10px;
       outline: none;
       border-radius: 3px;
       border: 1px solid #ccc;
       width: 690px;
       font-size: 18px;
-      color: black;
-      background: white;
     }
+
     textarea#text-area {
+      color: black;
+      background-color: white;
       padding: 10px;
       outline: none;
       border-radius: 3px;
@@ -57,10 +49,11 @@
       width: 690px;
       height: 100px;
       font-size: 18px;
-      color: black;
-      background: white;
     }
+
     div#content-area {
+      color: black;
+      background-color: white;
       border-radius: 3px;
       border: 1px solid #ccc;
       padding: 10px;
@@ -68,34 +61,56 @@
       height: 150px;
       font-size: 18px;
     }
+
     div#summer-note {
-      width: 690px;
+      max-width: 690px;
     }
   </style>
 </head>
+
 <body>
-  <section>
-    <h1>Bangla Input Tests</h1>
+  <div id="header_wrap" class="outer">
+    <header class="inner">
+      <a id="forkme_banner" href="https://github.com/dipu-bd/bangla-input">View on GitHub</a>
 
-    <h3>Input field</h3>
-    <input id="input-area" type="text" placeholder="Start typing">
-    
-    <hr>
+      <h1 id="project_title">Bangla Input Tests</h1>
+      <h2 id="project_tagline">A versatile bangla input tools for the web</h2>
 
-    <h3>Textarea</h3>
-    <textarea id="text-area" placeholder="Start typing in bangla"></textarea>
+      <div id="downloads">
+        <a class="zip_download_link" href="https://github.com/dipu-bd/bangla-input/zipball/master">Download this project as a .zip file</a>
+        <a class="tar_download_link" href="https://github.com/dipu-bd/bangla-input/tarball/master">Download this project as a tar.gz file</a>
+      </div>
+    </header>
+  </div>
 
-    <hr>
+  <div id="main_content_wrap" class="outer">
+    <div id="main_content">
+      <h3>Input field</h3>
+      <input id="input-area" type="text" placeholder="Start typing">
 
-    <h3>Content Editable</h3>
-    <div id="content-area" contenteditable="true">
-      <span>Start typing here</span>
+      <hr>
+
+      <h3>Textarea</h3>
+      <textarea id="text-area" placeholder="Start typing in bangla"></textarea>
+
+      <hr>
+
+      <h3>Content Editable</h3>
+      <div id="content-area" contenteditable="true">
+        <span>Start typing here</span>
+      </div>
+
+      <h3>Summernote</h3>
+      <div id="summer-note"></div>
     </div>
+  </div>
 
-    <h3>Summernote</h3>
-    <div id="summer-note"></div>
-  </section>
-
+  <div id="footer_wrap" class="outer">
+    <footer class="inner text-center">
+      <p class="copyright"><b>Bangla Input Tools</b> maintained by <a href="https://github.com/dipu-bd">dipu-bd</a></p>
+    </footer>
+  </div>
+  
   <script>
     $('#summer-note').summernote({
       placeholder: 'Start editing here',
@@ -103,8 +118,13 @@
     });
     $('#input-area').bninput();
     $('#text-area').bninput();
-    $('#content-area').bninput({ contentEditable: true });
-    $('.note-editable').bninput({ contentEditable: true });
+    $('#content-area').bninput({
+      contentEditable: true
+    });
+    $('.note-editable').bninput({
+      contentEditable: true
+    });
   </script>
 </body>
+
 </html>
