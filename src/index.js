@@ -296,7 +296,7 @@ function registerInputTool ($elem, v) {
   })
 }
 
-$.fn.bninput = function () {
+$.fn.bangla = function () {
   return this.each((v) => registerInputTool($(this, v)))
 }
 
