@@ -2,11 +2,4 @@
 
 A versatile bangla input tools for the web.
 
-### Installation
-
-```
-$ npm install --save-dev jquery jquery.bninput
-```
-
-### 
-
+Visit https://github.com/dipu-bd/bangla-input for details...
