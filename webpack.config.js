@@ -1,11 +1,9 @@
 const path = require('path')
 
 module.exports = {
-  entry: {
-    'bangla-input': './src/index.js'
-  },
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'jquery.bninput.js'
+    filename: 'jquery.bangla.js'
   }
 }
