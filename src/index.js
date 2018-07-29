@@ -109,13 +109,21 @@ function registerInputTool ($elem, v) {
       'margin': '3px',
       'margin-bottom': 0,
       'padding': '5px 12px',
-      'background': 'white',
+      'background': '#fafafc',
       'overflow': 'visible',
       'border-bottom': '1px solid #dedfe5',
       'transform': 'translateZ(0)',
       '-moz-transform': 'translateZ(0)',
       '-webkit-transform': 'translateZ(0)'
     })
+    const caret = $('<span>&nbsp</span>')
+    caret.css({
+      'display': 'inline-block',
+      'width': '2px',
+      'background-color': '#444',
+      'margin-left': '3px'
+    })
+    running.append(caret)
     view.append(running)
   }
 
