@@ -4,7 +4,8 @@
   "description": "A versatile bangla input tools for the web",
   "main": "src/index.js",
   "scripts": {
-    "build": "babel ./src/index.js -f bangla-input.js --out-dir dist/ -s --presets env --minified --no-comments --compact",
+    "build": "webpack --progress --hide-modules --mode production",
+    "dev": "webpack --watch --progress --hide-modules --watch-poll --mode development",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,6 +31,8 @@
   "homepage": "https://github.com/dipu-bd/bangla-input#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
   }
 }
