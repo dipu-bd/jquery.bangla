@@ -16,7 +16,7 @@
 
   <!-- custom scripts -->
   <link rel="stylesheet" type="text/css" href="index.css">
-  <script src="jquery.bangla/bangla/jquery.bninput.js"></script>
+  <script src="dist/jquery.bangla.js"></script>
 
   <style>
     h3 {
@@ -116,12 +116,12 @@
       placeholder: 'Start editing here',
       height: 200
     });
-    $('#input-area').bninput();
-    $('#text-area').bninput();
-    $('#content-area').bninput({
+    $('#input-area').bangla();
+    $('#text-area').bangla();
+    $('#content-area').bangla({
       contentEditable: true
     });
-    $('.note-editable').bninput({
+    $('.note-editable').bangla({
       contentEditable: true
     });
   </script>
