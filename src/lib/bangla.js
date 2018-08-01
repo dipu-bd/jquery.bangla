@@ -92,6 +92,14 @@ export default class BanglaInputTool {
     return true
   }
 
+  _isWordKey (e) {
+    if (e.keyCode === KEY_CODE.DOT) return true
+    if (e.keyCode >= KEY_CODE.A && e.keyCode <= KEY_CODE.Z) return true
+    if (e.keyCode >= KEY_CODE.ZERO && e.keyCode <= KEY_CODE.NINE) {
+      return !e.shiftKey
+    }
+  }
+
   _processKeypress (e) {
     this._checkEscape(e)
 
@@ -138,9 +146,7 @@ export default class BanglaInputTool {
     }
 
     // Check if key needs to be taken
-    if (e.keyCode === KEY_CODE.DOT ||
-        (e.keyCode >= KEY_CODE.A && e.keyCode <= KEY_CODE.Z) ||
-        (e.keyCode >= KEY_CODE.ZERO && e.keyCode <= KEY_CODE.NINE)) {
+    if (this._isWordKey(e)) {
       this.setWord(word + e.key)
       return false
     }
