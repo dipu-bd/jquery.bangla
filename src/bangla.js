@@ -92,19 +92,13 @@ export default class BanglaInputTool {
     return true
   }
 
-  _checkToggle (evt) {
-    const togglers = [
-      KEY_CODE.DOT,
-      KEY_CODE.SPACE
-    ]
-    if (evt.ctrlKey && togglers.indexOf(evt.keyCode) >= 0) {
-      this.toggleEnable()
-    }
-  }
-
   _processKeypress (e) {
-    this._checkToggle(e)
     this._checkEscape(e)
+
+    if (e.ctrlKey && [KEY_CODE.DOT, KEY_CODE.SPACE].indexOf(e.keyCode) >= 0) {
+      return this.toggleEnable()
+    }
+
     if (!this.enable) return true
 
     // Check for action key sequence
@@ -158,7 +152,7 @@ export default class BanglaInputTool {
     ]
     if (word.length && goodKeys.indexOf(e.keyCode) < 0) {
       this.commitCurrentWord()
-      if (e.keyCode === KEY_CODE.ENTER || e.keyCode === KEY_CODE.TAB) {
+      if ([KEY_CODE.ENTER, KEY_CODE.TAB].indexOf(e.keyCode) >= 0) {
         return false
       }
     }

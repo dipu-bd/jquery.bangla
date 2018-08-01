@@ -115,14 +115,27 @@
   </div>
 
   <script>
+    $('#input-area').bangla();
+    $('#input-area').bangla('toggle'); // toggle current language (default: en)
+
+    $('#text-area').bangla();
+    $('#text-area').bangla('enable', true); // enable bangla typing
+
+    $('#content-area').bangla({
+      enable: true, // enable using config
+      storeKey: 'text-area-candidates', // set key for to store selected words
+    });
+
+    // summer-note editor
     $('#summer-note').summernote({
       placeholder: 'Start editing here',
       height: 200
     });
-    $('#input-area').bangla();
-    $('#text-area').bangla();
-    $('#content-area').bangla();
-    $('.note-editable').bangla();
+    $('.note-editable').bangla({ enable: true });
+
+    // get the input-tool object
+    console.log($('#input-area').bangla('tool'));
+    console.log($('#text-area').bangla('enable'));
   </script>
 </body>
 

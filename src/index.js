@@ -3,20 +3,26 @@ import Bangla from './bangla'
 
 const BANGLA = Symbol('bangla')
 
-$.fn.bangla = function (a, b) {
-  return this.each(function () {
-    if (!this[BANGLA]) {
-      this[BANGLA] = new Bangla(this, a)
-      return this[BANGLA]
-    }
-    switch (a) {
-      case 'toggle':
-        return this[BANGLA].toggleLang()
-      case 'enable':
-        if (typeof b === 'boolean') {
-          this[BANGLA].enable = b
+$.fn.bangla = function (key, val) {
+  switch (key) {
+    case 'tool':
+      if (this.length !== 1) return null
+      return this[0][BANGLA]
+    case 'enable':
+      if (this.length !== 1) return null
+      if (typeof val === 'boolean') {
+        this[0][BANGLA].enable = val
+      }
+      return this[0][BANGLA].enable
+    case 'toggle':
+      return this.each(function () {
+        this[BANGLA].toggleEnable()
+      })
+    default:
+      return this.each(function () {
+        if (!this[BANGLA]) {
+          this[BANGLA] = new Bangla(this, key)
         }
-        return this[BANGLA].enable
-    }
-  })
+      })
+  }
 }
