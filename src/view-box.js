@@ -1,20 +1,23 @@
 import $ from './jquery'
 import styles from './styles'
 
-const VIEW_ID = 'bangla--suggestions'
-
 // to make the caret blinking
 window._caretBlinker = window._caretBlinker || (
   setInterval(() => $('.caret-blink').fadeIn(300).fadeOut(500), 1000)
 )
 
 export default class ViewBox {
-  constructor ($elem) {
+  constructor ($elem, id) {
     this.$elem = $elem
     this.word = ''
     this.active = -1
     this.onclick = null
     this.suggestions = []
+
+    // generate id
+    this.id = 'bangla--suggestion_'
+    this.id += $elem.attr('id') || Math.floor(Math.random() * 10000)
+    this.id = id || this.id
 
     // update view on resize
     $(window).resize((e) => {
@@ -23,19 +26,15 @@ export default class ViewBox {
   }
 
   buildView () {
-    if (!document.getElementById(VIEW_ID)) {
-      $('body').append(`<div id="${VIEW_ID}"></div>`)
+    if (!document.getElementById(this.id)) {
+      $('body').append(`<div id="${this.id}"></div>`)
     }
     if (!this.$view) {
-      this.$view = $(`#${VIEW_ID}`)
+      this.$view = $(`#${this.id}`)
       this.$view.css(styles.viewBox)
       this.$view.html('')
-      if (this.$running) {
-        this.$view.prepend(this.$running)
-      }
-      if (this.$list) {
-        this.$view.append(this.$list)
-      }
+      this.$running = null
+      this.$list = null
     }
   }
 
