@@ -1,6 +1,7 @@
+import $ from './jquery'
 import styles from './styles'
 
-const $ = window.$ || window.jQuery || console.error('Error: jQuery does not exists!')
+const VIEW_ID = 'bangla--suggestions'
 
 // to make the caret blinking
 window._caretBlinker = window._caretBlinker || (
@@ -8,31 +9,33 @@ window._caretBlinker = window._caretBlinker || (
 )
 
 export default class ViewBox {
-  constructor ($elem, id) {
+  constructor ($elem) {
     this.$elem = $elem
     this.word = ''
     this.active = -1
     this.onclick = null
     this.suggestions = []
-    this.id = id || 'bangla--suggestions'
 
-    // update view on resize and scroll
+    // update view on resize
     $(window).resize((e) => {
       if (this.word) this.toggleVisible()
     })
   }
 
   buildView () {
-    if (!this.$view || !document.getElementById(this.id)) {
-      this.$view = $(`<div id="${this.id}"></div>`)
+    if (!document.getElementById(VIEW_ID)) {
+      $('body').append(`<div id="${VIEW_ID}"></div>`)
+    }
+    if (!this.$view) {
+      this.$view = $(`#${VIEW_ID}`)
       this.$view.css(styles.viewBox)
+      this.$view.html('')
       if (this.$running) {
         this.$view.prepend(this.$running)
       }
       if (this.$list) {
         this.$view.append(this.$list)
       }
-      $('body').append(this.$view)
     }
   }
 
@@ -128,11 +131,18 @@ export default class ViewBox {
   }
 
   setSelected (index) {
-    this.active = index
+    this.active = -1
+    if (index >= 0) {
+      this.active = (index + this.suggestions.length) % this.suggestions.length
+    }
+    if (this.active < 0 && this.suggestions.length > 0) {
+      this.active = 0
+    }
     this.update()
   }
 
-  onClick (handler) {
-    this.onclick = handler
+  getSelectedWord () {
+    if (this.active < 0) return this.word
+    return this.suggestions[this.active] || this.word
   }
 }
