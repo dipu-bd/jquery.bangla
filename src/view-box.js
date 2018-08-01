@@ -57,13 +57,15 @@ export default class ViewBox {
   }
 
   buildListItems () {
+    // create new list if not exists
     if (!this.$list) {
       this.$list = $('<div class="list"></div>')
-      // add to current view
-      if (this.$view) {
-        this.$view.append(this.$list)
-      }
     }
+    // add to current view
+    if (this.$view) {
+      this.$view.append(this.$list)
+    }
+    // build list items
     this.$list.html('')
     this.suggestions.slice(0, 10).forEach((val, index) => {
       const item = $(`<div>${val}</div>`)
@@ -80,7 +82,11 @@ export default class ViewBox {
     })
   }
 
-  showOrHide () {
+  toggleVisible () {
+    if (!this.$view) {
+      this.buildView()
+    }
+
     if (!this.word) {
       return this.$view.css('display', 'none')
     }
@@ -103,7 +109,7 @@ export default class ViewBox {
     this.buildView()
     this.buildRunningItem()
     this.buildListItems()
-    this.showOrHide()
+    this.toggleVisible()
   }
 
   setSuggestions (suggestions) {
@@ -113,14 +119,12 @@ export default class ViewBox {
 
   setWord (word) {
     this.word = word
-    this.buildRunningItem()
-    this.showOrHide()
+    this.update()
   }
 
   setSelected (index) {
     this.active = index
-    this.buildListItems()
-    this.showOrHide()
+    this.update()
   }
 
   onClick (handler) {

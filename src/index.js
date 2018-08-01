@@ -55,37 +55,37 @@ function registerInputTool ($elem, view) {
   // Updates the current word
   const setWord = (newWord) => {
     word = newWord || ''
+    suggestions = []
+    selectedIndex = -1
     if (word) {
       const past = avro.candidate(word)
       suggestions = avro.suggest(word).words
       selectedIndex = suggestions.indexOf(past)
-      if (selectedIndex < 0 && suggestions.length) {
+      if (suggestions.length && selectedIndex < 0) {
         selectedIndex = 0
       }
-    } else {
-      suggestions = []
-      selectedIndex = -1
     }
     view.setSuggestions(suggestions)
+    view.setSelected(selectedIndex)
     view.setWord(newWord)
   }
 
   // Sets the selected index
   const setSelectedIndex = (index) => {
-    if (suggestions.length > 0) {
+    selectedIndex = -1
+    if (typeof index === 'number' && suggestions.length > 0) {
       selectedIndex = (index + suggestions.length) % suggestions.length
-    } else {
-      selectedIndex = -1
     }
     view.setSelected(selectedIndex)
   }
 
   // Commit the current word
   const commitCurrentWord = () => {
-    let selected = word
+    let selected = null
     if (selectedIndex >= 0 || selectedIndex < suggestions.length) {
       selected = suggestions[selectedIndex]
     }
+    selected = selected || word
     insertAtCursor(selected)
     avro.commit(word, selected)
     setWord('')
@@ -200,7 +200,7 @@ function registerInputTool ($elem, view) {
   })
 }
 
-$.fn.bangla = function (v) {
+$.fn.bangla = function (action, ...params) {
   return this.each(function () {
     const view = new ViewBox($(this))
     registerInputTool($(this), view)

@@ -5,7 +5,7 @@ export default {
     'z-index': 10000,
     'position': 'fixed',
     // 'padding': '1px',
-    'min-width': '160px',
+    'min-width': '150px',
     'background': '#f7f7f9',
     'border-radius': '3px',
     'border': '1px solid #d6d9db',
@@ -17,9 +17,9 @@ export default {
     'font-weight': '1.15em',
     'margin': '3px',
     'margin-bottom': 0,
-    'background': '#fafafc',
+    'background': '#fefeff',
     'overflow': 'visible',
-    'padding': '5px 12px',
+    'padding': '5px 10px',
     'border-bottom': '1px solid #dedfe5',
     'transform': 'translateZ(0)',
     '-moz-transform': 'translateZ(0)',
@@ -33,7 +33,7 @@ export default {
   },
   listItem: {
     'cursor': 'pointer',
-    'padding': '4px 10px',
+    'padding': '3px 10px',
     'border-top': '1px solid #dedfe5'
   },
   listItemActive: {
