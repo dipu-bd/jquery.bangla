@@ -106,10 +106,12 @@ export default class ViewBox {
   }
 
   update () {
-    this.buildView()
-    this.buildRunningItem()
-    this.buildListItems()
-    this.toggleVisible()
+    setTimeout(() => {
+      this.buildView()
+      this.buildRunningItem()
+      this.buildListItems()
+      this.toggleVisible()
+    }, 1)
   }
 
   setSuggestions (suggestions) {

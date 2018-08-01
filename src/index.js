@@ -57,6 +57,7 @@ function registerInputTool ($elem, view) {
     word = newWord || ''
     suggestions = []
     selectedIndex = -1
+    // get new suggestions
     if (word) {
       const past = avro.candidate(word)
       suggestions = avro.suggest(word).words
@@ -65,9 +66,11 @@ function registerInputTool ($elem, view) {
         selectedIndex = 0
       }
     }
-    view.setSuggestions(suggestions)
-    view.setSelected(selectedIndex)
-    view.setWord(newWord)
+    // update the view
+    view.suggestions = suggestions
+    view.active = selectedIndex
+    view.word = word
+    view.update()
   }
 
   // Sets the selected index
@@ -150,6 +153,7 @@ function registerInputTool ($elem, view) {
     if (e.ctrlKey && [KEY_CODE.DOT, KEY_CODE.SPACE].indexOf(e.keyCode) >= 0) {
       isBN = !isBN
     }
+    if (!isBN) return true
     switch (e.keyCode) {
       case KEY_CODE.UP:
         if (!word) return true
