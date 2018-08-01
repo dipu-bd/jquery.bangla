@@ -1,5 +1,5 @@
-import $ from './jquery'
-import Bangla from './bangla'
+import $ from './lib/jquery'
+import Bangla from './lib/bangla'
 
 const BANGLA = Symbol('bangla')
 

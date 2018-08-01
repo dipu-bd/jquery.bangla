@@ -1,7 +1,7 @@
+import './jquery.caret'
 import $ from './jquery'
-import './lib/jquery.caret'
 import ViewBox from './view-box'
-import AvroPhonetic from './lib/avro.min'
+import AvroPhonetic from '../provider/avro.min'
 import {insertAtCursor, KEY_CODE} from './utils'
 
 export default class BanglaInputTool {

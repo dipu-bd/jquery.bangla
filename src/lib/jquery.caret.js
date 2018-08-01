@@ -1,5 +1,5 @@
 /* eslint-disable */
-const $ = window.$ || window.jQuery || console.error('Error: jQuery does not exists!')
+import $ from './jquery'
 
 // @ sourceMappingURL=jquery.caret.map
 /*

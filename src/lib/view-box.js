@@ -1,5 +1,5 @@
 import $ from './jquery'
-import styles from './styles'
+import styles from '../config/styles'
 
 // to make the caret blinking
 window._caretBlinker = window._caretBlinker || (
