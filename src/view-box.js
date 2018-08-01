@@ -11,10 +11,19 @@ export default class ViewBox {
   constructor ($elem, id) {
     this.$elem = $elem
     this.word = ''
-    this.suggestions = []
     this.active = -1
     this.onclick = null
+    this.suggestions = []
     this.id = id || 'bangla--suggestions'
+
+    // update view on resize and scroll
+    $(window).resize((e) => {
+      if (this.word) this.showOrHide()
+    })
+    $(window).scroll((e) => {
+      if (this.word) this.showOrHide()
+    })
+
   }
 
   buildView () {
@@ -63,7 +72,6 @@ export default class ViewBox {
         item.css(styles.listItemActive)
       }
       item.click(() => {
-        this.active = index
         if (this.onclick && $.isFunction(this.onclick)) {
           this.onclick(index, this.word, this)
         }
@@ -107,5 +115,15 @@ export default class ViewBox {
     this.word = word
     this.buildRunningItem()
     this.showOrHide()
+  }
+
+  setSelected (index) {
+    this.active = index
+    this.buildListItems()
+    this.showOrHide()
+  }
+
+  onClick (handler) {
+    this.handler = handler
   }
 }
