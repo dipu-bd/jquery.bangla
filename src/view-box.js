@@ -1,10 +1,16 @@
-import styles from 'view-box'
+import styles from './styles'
 
-const $ = window.$ || window.jQuery || require('jquery')
+const $ = window.$ || window.jQuery || console.error('Error: jQuery does not exists!')
+
+// to make the caret blinking
+window._caretBlinker = window._caretBlinker || (
+  setInterval(() => $('.caret-blink').fadeIn(300).fadeOut(500), 1000)
+)
 
 export default class ViewBox {
   constructor ($elem, id) {
     this.$elem = $elem
+    this.word = ''
     this.suggestions = []
     this.active = -1
     this.onclick = null
@@ -66,9 +72,40 @@ export default class ViewBox {
     })
   }
 
+  showOrHide () {
+    if (!this.word) {
+      return this.$view.css('display', 'none')
+    }
+
+    const offset = this.$elem.caret('offset')
+    let top = (offset.top + offset.height - window.scrollY + 3) + 'px'
+    // const height = offset.top + view.height() + 5
+    // if (height > window.innerHeight) {   // check if the view should be on top
+    //   top = (offset.top - window.scrollY - view.height() - 7) + 'px'
+    //   view.append(running)
+    // }
+    this.$view.css({
+      display: 'block',
+      top,
+      left: (offset.left) + 'px'
+    })
+  }
+
   update () {
     this.buildView()
     this.buildRunningItem()
     this.buildListItems()
+    this.showOrHide()
+  }
+
+  setSuggestions (suggestions) {
+    this.suggestions = suggestions || []
+    this.buildListItems()
+  }
+
+  setWord (word) {
+    this.word = word
+    this.buildRunningItem()
+    this.showOrHide()
   }
 }
