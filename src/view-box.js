@@ -20,9 +20,6 @@ export default class ViewBox {
     $(window).resize((e) => {
       if (this.word) this.toggleVisible()
     })
-    $(window).scroll((e) => {
-      // if (this.word) this.toggleVisible()
-    })
   }
 
   buildView () {
