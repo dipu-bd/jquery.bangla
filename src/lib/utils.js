@@ -40,7 +40,9 @@ export function insertAtCursor ($elem, text) {
     // if not content editable
     if ($elem.attr('contenteditable') !== 'true') {
       let val = $elem.val()
-      val = val.substr(0, pos) + text + val.substr(pos)
+      const start = $elem.prop('selectionStart')
+      const stop = $elem.prop('selectionEnd')
+      val = val.substr(0, start) + text + val.substr(stop)
       return $elem.val(val)
     }
     // when content-ediable
