@@ -14,8 +14,8 @@ export default class BanglaInputTool {
     this.storeKey = config.key || '__avro--candidates'
     this.provider = config.provider || this.getAvroProvider() // default provider
 
+    this.initView(config)
     this.trackCaret()
-    this.initView()
     this.watchWindow()
     this.watchElement()
   }
@@ -45,8 +45,8 @@ export default class BanglaInputTool {
     )
   }
 
-  initView () {
-    this.view = new ViewBox(this.$elem)
+  initView (config) {
+    this.view = new ViewBox(this.$elem, config)
     this.view.onclick = () => {
       this.commitCurrentWord()
     }

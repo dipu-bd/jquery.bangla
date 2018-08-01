@@ -7,7 +7,11 @@ window._caretBlinker = window._caretBlinker || (
 )
 
 export default class ViewBox {
-  constructor ($elem, id) {
+  constructor ($elem, config) {
+    config = config || {}
+    this.disable = config.disableSuggestion || false
+    this.maxSuggestions = config.maxSuggestions || 10
+
     this.$elem = $elem
     this.word = ''
     this.active = -1
@@ -17,7 +21,6 @@ export default class ViewBox {
     // generate id
     this.id = 'bangla--suggestion_'
     this.id += $elem.attr('id') || Math.floor(Math.random() * 10000)
-    this.id = id || this.id
 
     // update view on resize
     $(window).resize((e) => {
@@ -65,7 +68,7 @@ export default class ViewBox {
     }
     // build list items
     this.$list.html('')
-    this.suggestions.slice(0, 10).forEach((val, index) => {
+    this.suggestions.forEach((val, index) => {
       const item = $(`<div>${val}</div>`)
       item.css(styles.listItem)
       if (index === this.active) {
@@ -104,6 +107,13 @@ export default class ViewBox {
   }
 
   update () {
+    if (this.disable) {
+      if (this.$view) {
+        return this.$view.css('display', 'none')
+      }
+      return
+    }
+
     setTimeout(() => {
       this.buildView()
       this.buildRunningItem()
@@ -120,7 +130,7 @@ export default class ViewBox {
   }
 
   setSuggestions (suggestions) {
-    this.suggestions = suggestions || []
+    this.suggestions = (suggestions || []).slice(0, this.maxSuggestions)
     this.buildListItems()
   }
 
