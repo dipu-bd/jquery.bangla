@@ -67,10 +67,14 @@ function registerInputTool ($elem, view) {
       }
     }
     // update the view
-    view.suggestions = suggestions
-    view.active = selectedIndex
-    view.word = word
-    view.update()
+    if (word) {
+      view.suggestions = suggestions
+      view.active = selectedIndex
+      view.word = word
+      view.update()
+    } else {
+      view.clear()
+    }
   }
 
   // Sets the selected index

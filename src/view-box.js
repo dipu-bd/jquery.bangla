@@ -18,12 +18,11 @@ export default class ViewBox {
 
     // update view on resize and scroll
     $(window).resize((e) => {
-      if (this.word) this.showOrHide()
+      if (this.word) this.toggleVisible()
     })
     $(window).scroll((e) => {
-      if (this.word) this.showOrHide()
+      // if (this.word) this.toggleVisible()
     })
-
   }
 
   buildView () {
@@ -92,7 +91,7 @@ export default class ViewBox {
     }
 
     const offset = this.$elem.caret('offset')
-    let top = (offset.top + offset.height - window.scrollY + 3) + 'px'
+    let top = (offset.top + offset.height + 3) + 'px'
     // const height = offset.top + view.height() + 5
     // if (height > window.innerHeight) {   // check if the view should be on top
     //   top = (offset.top - window.scrollY - view.height() - 7) + 'px'
@@ -114,6 +113,13 @@ export default class ViewBox {
     }, 1)
   }
 
+  clear () {
+    this.suggestions = []
+    this.active = -1
+    this.word = ''
+    this.update()
+  }
+
   setSuggestions (suggestions) {
     this.suggestions = suggestions || []
     this.buildListItems()
@@ -130,6 +136,6 @@ export default class ViewBox {
   }
 
   onClick (handler) {
-    this.handler = handler
+    this.onclick = handler
   }
 }

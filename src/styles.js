@@ -3,7 +3,7 @@ export default {
     'font-size': '1em',
     'display': 'none',
     'z-index': 10000,
-    'position': 'fixed',
+    'position': 'absolute',
     // 'padding': '1px',
     'min-width': '150px',
     'background': '#f7f7f9',
