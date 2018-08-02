@@ -4,7 +4,7 @@
   [![Build Status](https://travis-ci.org/dipu-bd/jquery.bangla.svg?branch=master)](https://travis-ci.org/dipu-bd/jquery.bangla)
   [![NPM Downloads](https://img.shields.io/npm/dt/jquery.bangla.svg)](https://www.npmjs.com/package/jquery.bangla)
   [![Code Climate](https://img.shields.io/codeclimate/github/dipu-bd/jquery.bangla.svg)](https://codeclimate.com/github/dipu-bd/jquery.bangla)
-  [![Dependencies]("https://david-dm.org/dipu-bd/jquery.bangla.svg)](https://david-dm.org/dipu-bd/jquery.bangla)
+  [![devDependencies Status](https://david-dm.org/dipu-bd/jquery.bangla/dev-status.svg)](https://david-dm.org/dipu-bd/jquery.bangla?type=dev)
   [![License](https://img.shields.io/npm/l/vue-weather-widget.svg)](https://github.com/dipu-bd/vue-weather-widget/blob/master/LICENSE)
 
 
