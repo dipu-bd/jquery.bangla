@@ -8,30 +8,31 @@ $.fn.bangla = function (key, val) {
     if (!this[BANGLA]) {
       this[BANGLA] = new Bangla(this, key)
     }
+    switch (key) {
+      case 'on':
+        this[BANGLA].setEnable(true)
+        break
+      case 'off':
+        this[BANGLA].setEnable(false)
+        break
+      case 'toggle':
+        this[BANGLA].toggleEnable()
+        break
+    }
   })
+
+  if (this.length !== 1) {
+    return null
+  }
   switch (key) {
     case 'tool':
-      if (this.length !== 1) return null
       return this[0][BANGLA]
     case 'enable':
-      if (this.length !== 1) return null
       if (typeof val === 'boolean') {
         this[0][BANGLA].setEnable(val)
       }
       return this[0][BANGLA].enable
-    case 'on':
-      return this.each(function () {
-        this[BANGLA].setEnable(true)
-      })
-    case 'off':
-      return this.each(function () {
-        this[BANGLA].setEnable(false)
-      })
-    case 'toggle':
-      return this.each(function () {
-        this[BANGLA].toggleEnable()
-      })
-    default:
-      return selector
   }
+
+  return selector
 }
