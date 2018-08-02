@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "jquery.bangla-test",
+  "version": "1.0.0",
+  "description": "Example of usage for jquery.bangla",
+  "main": "index.html",
+  "scripts": {},
+  "dependencies": {
+    "jquery.bangla": "^1.2.1"
+  }
+}
