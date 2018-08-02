@@ -5,7 +5,7 @@
   [![NPM Downloads](https://img.shields.io/npm/dt/jquery.bangla.svg)](https://www.npmjs.com/package/jquery.bangla)
   [![Maintainability](https://api.codeclimate.com/v1/badges/f4a550ff070a5484b21b/maintainability)](https://codeclimate.com/github/dipu-bd/jquery.bangla/maintainability)
   [![devDependencies Status](https://david-dm.org/dipu-bd/jquery.bangla/dev-status.svg)](https://david-dm.org/dipu-bd/jquery.bangla?type=dev)
-  [![License](https://img.shields.io/npm/l/vue-weather-widget.svg)](https://github.com/dipu-bd/vue-weather-widget/blob/master/LICENSE)
+  [![License](https://img.shields.io/npm/l/jquery.bangla.svg)](https://github.com/dipu-bd/jquery.bangla/blob/master/LICENSE)
 
 
 A versatile bangla input tools for the web
