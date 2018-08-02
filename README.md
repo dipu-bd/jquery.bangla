@@ -1,12 +1,10 @@
 # Bangla Input Tools
 
-
-  [![Build Status](https://travis-ci.org/dipu-bd/jquery.bangla.svg?branch=master)](https://travis-ci.org/dipu-bd/jquery.bangla)
-  [![NPM Downloads](https://img.shields.io/npm/dt/jquery.bangla.svg)](https://www.npmjs.com/package/jquery.bangla)
-  [![Maintainability](https://api.codeclimate.com/v1/badges/f4a550ff070a5484b21b/maintainability)](https://codeclimate.com/github/dipu-bd/jquery.bangla/maintainability)
-  [![devDependencies Status](https://david-dm.org/dipu-bd/jquery.bangla/dev-status.svg)](https://david-dm.org/dipu-bd/jquery.bangla?type=dev)
-  [![License](https://img.shields.io/npm/l/jquery.bangla.svg)](https://github.com/dipu-bd/jquery.bangla/blob/master/LICENSE)
-
+[![Build Status](https://travis-ci.org/dipu-bd/jquery.bangla.svg?branch=master)](https://travis-ci.org/dipu-bd/jquery.bangla)
+[![NPM Downloads](https://img.shields.io/npm/dt/jquery.bangla.svg)](https://www.npmjs.com/package/jquery.bangla)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f4a550ff070a5484b21b/maintainability)](https://codeclimate.com/github/dipu-bd/jquery.bangla/maintainability)
+[![devDependencies Status](https://david-dm.org/dipu-bd/jquery.bangla/dev-status.svg)](https://david-dm.org/dipu-bd/jquery.bangla?type=dev)
+[![License](https://img.shields.io/npm/l/jquery.bangla.svg)](https://github.com/dipu-bd/jquery.bangla/blob/master/LICENSE)
 
 A versatile bangla input tools for the web
 
@@ -101,9 +99,12 @@ By default, Avro Phonetic from https://github.com/omicronlab/avro-pad is used. B
 You can customize the input tool after initialization:
 
 - `$('input').bangla('toggle')`: Toggles the input option between bangla and english.
-- `$('input').bangla('enable')`: Get whether the bangla is enabled
-- `$('input').bangla('enable', true)`: Enables the bangla input
-- `$('input').bangla('enable', false)`: Disable the bangla input, and enable english.
+- `$('input').bangla('on')`: Enables the bangla mode.
+- `$('input').bangla('off')`: Disables the bangla mode.
+- `$('input').bangla('enable')`: Get whether the bangla is enabled for a single element.
+- `$('input').bangla('enable', true)`: Enables the bangla mode.
+- `$('input').bangla('enable', false)`: Disable the bangla mode.
+- `$('input').bangla('tool')`: Access the [BanglaInputTool](https://github.com/dipu-bd/jquery.bangla/blob/master/src/lib/bangla.js) instance for a single element.
 
 ## License
 
