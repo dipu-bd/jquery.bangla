@@ -93,6 +93,7 @@ export default class BanglaInputTool {
   }
 
   _isWordKey (e) {
+    if (e.altKey || e.ctrlKey) return false
     if (e.keyCode === KEY_CODE.DOT) return true
     if (e.keyCode >= KEY_CODE.A && e.keyCode <= KEY_CODE.Z) return true
     if (e.keyCode >= KEY_CODE.ZERO && e.keyCode <= KEY_CODE.NINE) {
