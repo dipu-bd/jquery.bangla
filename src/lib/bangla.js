@@ -72,7 +72,14 @@ export default class BanglaInputTool {
   }
 
   toggleEnable () {
-    this.enable = !this.enable
+    this.setEnable(!this.enable)
+  }
+
+  setEnable (val) {
+    this.enable = val
+    if (!this.enable) {
+      this.view.clear()
+    }
   }
 
   watchWindow () {
