@@ -1,12 +1,12 @@
 # Bangla Input Tools
 
-<p>
+
   [![Build Status](https://travis-ci.org/dipu-bd/jquery.bangla.svg?branch=master)](https://travis-ci.org/dipu-bd/jquery.bangla)
   [![NPM Downloads](https://img.shields.io/npm/dt/jquery.bangla.svg?style=flat-square)](https://www.npmjs.com/package/jquery.bangla)
   [![Code Climate](https://img.shields.io/codeclimate/github/dipu-bd/jquery.bangla.svg?style=flat-square)](https://codeclimate.com/github/dipu-bd/jquery.bangla)
   [![Dependencies]("https://david-dm.org/dipu-bd/jquery.bangla.svg?style=flat-square)](https://david-dm.org/dipu-bd/jquery.bangla)
   [![License](https://img.shields.io/npm/l/vue-weather-widget.svg?style=flat-square)](https://github.com/dipu-bd/vue-weather-widget/blob/master/LICENSE)
-</p>
+
 
 A versatile bangla input tools for the web
 
