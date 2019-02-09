@@ -6,6 +6,6 @@
   "main": "index.html",
   "scripts": {},
   "dependencies": {
-    "jquery.bangla": "^1.2.1"
+    "jquery.bangla": "^1.3.1"
   }
 }
