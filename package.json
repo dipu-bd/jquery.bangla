@@ -2,7 +2,7 @@
   "name": "jquery.bangla",
   "version": "1.3.0",
   "description": "A versatile bangla input tool for the web",
-  "main": "src/index.js",
+  "main": "./dist/jquery.bangla.js",
   "scripts": {
     "lint": "eslint ./src/index.js",
     "build": "webpack --progress --mode production",

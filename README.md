@@ -1,10 +1,12 @@
 # Bangla Input Tools
 
+[![npm (tag)](https://img.shields.io/npm/v/jquery.bangla.svg)](https://www.npmjs.com/package/jquery.bangla)
 [![Build Status](https://travis-ci.org/dipu-bd/jquery.bangla.svg?branch=master)](https://travis-ci.org/dipu-bd/jquery.bangla)
 [![NPM Downloads](https://img.shields.io/npm/dt/jquery.bangla.svg)](https://www.npmjs.com/package/jquery.bangla)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f4a550ff070a5484b21b/maintainability)](https://codeclimate.com/github/dipu-bd/jquery.bangla/maintainability)
 [![devDependencies Status](https://david-dm.org/dipu-bd/jquery.bangla/dev-status.svg)](https://david-dm.org/dipu-bd/jquery.bangla?type=dev)
 [![License](https://img.shields.io/npm/l/jquery.bangla.svg)](https://github.com/dipu-bd/jquery.bangla/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/dipu-bd/jquery.bangla.svg?style=social&label=Stars)](https://github.com/dipu-bd/jquery.bangla)
 
 A versatile bangla input tools for the web
 
