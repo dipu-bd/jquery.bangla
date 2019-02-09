@@ -16,7 +16,7 @@
 
   <!-- custom scripts -->
   <link rel="stylesheet" type="text/css" href="index.css">
-  <script src="node_modules/jquery.bangla/dist/jquery.bangla.js"></script>
+  <script src="dist/jquery.bangla.js"></script>
 
   <style>
     h3 {
@@ -77,8 +77,10 @@
       <h2 id="project_tagline">A versatile bangla input tools for the web</h2>
 
       <div id="downloads">
-        <a class="zip_download_link" href="https://github.com/dipu-bd/bangla-input/zipball/master">Download this project as a .zip file</a>
-        <a class="tar_download_link" href="https://github.com/dipu-bd/bangla-input/tarball/master">Download this project as a tar.gz file</a>
+        <a class="zip_download_link" href="https://github.com/dipu-bd/bangla-input/zipball/master">Download this
+          project as a .zip file</a>
+        <a class="tar_download_link" href="https://github.com/dipu-bd/bangla-input/tarball/master">Download this
+          project as a tar.gz file</a>
       </div>
     </header>
   </div>
@@ -131,7 +133,9 @@
       placeholder: 'Start editing here',
       height: 200
     });
-    $('.note-editable').bangla({ enable: true });
+    $('.note-editable').bangla({
+      enable: true
+    });
 
     // get the input-tool object
     console.log($('#input-area').bangla('tool'));
