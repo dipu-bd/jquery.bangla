@@ -14,6 +14,8 @@ export const KEY_CODE = {
   NINE: 57,
   A: 65,
   Z: 90,
+  NUMPAD_ZERO: 96,
+  NUMPAD_NINE: 105,
   DOT: 190
 }
 
