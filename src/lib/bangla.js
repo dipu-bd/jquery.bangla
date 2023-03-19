@@ -103,9 +103,8 @@ export default class BanglaInputTool {
     if (e.altKey || e.ctrlKey) return false
     if (e.keyCode === KEY_CODE.DOT) return true
     if (e.keyCode >= KEY_CODE.A && e.keyCode <= KEY_CODE.Z) return true
-    if (e.keyCode >= KEY_CODE.ZERO && e.keyCode <= KEY_CODE.NINE) {
-      return !e.shiftKey
-    }
+    if (e.keyCode >= KEY_CODE.ZERO && e.keyCode <= KEY_CODE.NINE) return !e.shiftKey
+    if (e.keyCode >= KEY_CODE.NUMPAD_ZERO && e.keyCode <= KEY_CODE.NUMPAD_NINE) return true
   }
 
   _processKeypress (e) {
